@@ -9,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const fetchToken = async (username, password) => {
     try {
-      const response = await fetch('://https7454-131-94-186-14.ngrok-free.app/token', {
+      const response = await fetch('https://7454-131-94-186-14.ngrok-free.app/token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
