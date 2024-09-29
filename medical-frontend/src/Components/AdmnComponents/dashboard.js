@@ -1,5 +1,5 @@
-// Dashboard.js
 import React from 'react';
+
 import {
   FaCalendarAlt,
   FaClipboardList,
@@ -11,7 +11,8 @@ import {
   FaUser,
 } from 'react-icons/fa';
 import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import ViewPatients from './ViewPatients'; // Import the ViewPatients component
+import ViewPatients from '../DocComponents/ViewPatients'; 
+import Appointments from '../AdmnComponents/appointments'; // Ensure correct path
 
 const Dashboard = () => {
   const location = useLocation();
@@ -32,7 +33,7 @@ const Dashboard = () => {
             </li>
             <li className="mb-3 flex items-center">
               <FaCalendarAlt className="mr-2" />
-              <Link to="#appointments" className="hover:underline">Appointments</Link>
+              <Link to="/schedule" className="hover:underline">Appointments</Link>
             </li>
             <li className="mb-3 flex items-center">
               <FaFileMedical className="mr-2" />
@@ -42,10 +43,9 @@ const Dashboard = () => {
               <FaCog className="mr-2" />
               <Link to="#settings" className="hover:underline">Settings</Link>
             </li>
-            {/* Add link to the View Patients page */}
             {role === 'medic' && (
               <li className="mb-3 flex items-center">
-                <FaClipboardList className="mr-2 " />
+                <FaClipboardList className="mr-2" />
                 <Link to="/view-patients" className="hover:underline">View Patients</Link>
               </li>
             )}
@@ -61,9 +61,7 @@ const Dashboard = () => {
       <div className="flex-1 p-10">
         <h2 className="text-3xl font-semibold mb-5">Dashboard</h2>
 
-        {/* Routing for the different views */}
         <Routes>
-          {/* Default Dashboard View for roles */}
           <Route
             path="/"
             element={
@@ -76,13 +74,11 @@ const Dashboard = () => {
                     </h3>
                     <p>Manage patient treatments, view schedules, and more.</p>
                     <button
-  onClick={() => navigate('/view-patients')}
-  className="bg-blue-600 text-white px-4 py-2 m-2 rounded mt-2 hover:bg-blue-700"
->
-  View Patients
-</button>
-                    {/* <button className="bg-blue-600 text-white px-4 py-2 m-2 rounded mt-2 hover:bg-blue-700">
-                      Medical Records   </button> */}
+                      onClick={() => navigate('/view-patients')}
+                      className="bg-blue-600 text-white px-4 py-2 m-2 rounded mt-2 hover:bg-blue-700"
+                    >
+                      View Patients
+                    </button>
                   </div>
                 )}
 
@@ -96,9 +92,12 @@ const Dashboard = () => {
                     <button className="bg-blue-600 text-white px-4 py-2 rounded mt-4 m-2 hover:bg-blue-700">
                       View Medical Records
                     </button>
-                    <button className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700">
-                      Book an Appointment
-                    </button>
+                    <button 
+        onClick={() => navigate('/Schedule')} // Navegar a /appointments
+        className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700"
+      >
+        Book an Appointment
+      </button>
                     <button className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700">
                       View Medications
                     </button>
@@ -110,7 +109,7 @@ const Dashboard = () => {
               </>
             }
           />
-          {/* View Patients Page */}
+          <Route path="/schedule" element={<Appointments userRole={role} />} />
           <Route path="/view-patients" element={<ViewPatients />} />
         </Routes>
       </div>
