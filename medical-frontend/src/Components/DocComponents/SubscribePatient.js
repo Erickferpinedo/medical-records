@@ -1,5 +1,5 @@
-import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const SubscribePatient = () => {
   const { patientId } = useParams(); // Get patient ID from URL params
@@ -55,6 +55,12 @@ const SubscribePatient = () => {
         >
           Submit Prescription
         </button>
+        <button 
+  onClick={() => navigate('/prescription-risk')}
+  className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700"
+>
+  View Prescription Risks
+</button>
       </form>
     </div>
   );

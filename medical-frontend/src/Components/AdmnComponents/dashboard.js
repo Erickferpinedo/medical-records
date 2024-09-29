@@ -1,18 +1,19 @@
 import React from 'react';
-
 import {
   FaCalendarAlt,
   FaClipboardList,
   FaCog,
-  FaFileMedical,
   FaHeartbeat,
   FaPills,
   FaSignOutAlt,
-  FaUser,
+  FaUser
 } from 'react-icons/fa';
 import { Link, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import ViewPatients from '../DocComponents/ViewPatients'; 
 import Appointments from '../AdmnComponents/appointments'; // Ensure correct path
+import ViewPatients from '../DocComponents/ViewPatients';
+import MedicalRecords from '../patientComponents/MedicalRecords';
+import PatientMedications from '../patientComponents/PatientMedication'; // Con la capitalización correcta
+import UploadMedicalRecords from '../patientComponents/UpdateMedicalRecords';
 
 const Dashboard = () => {
   const location = useLocation();
@@ -29,19 +30,17 @@ const Dashboard = () => {
           <ul>
             <li className="mb-3 flex items-center">
               <FaUser className="mr-2" />
-              <Link to="#profile" className="hover:underline">Profile</Link>
+              <Link to={`/profile?role=${role}`} className="hover:underline">Profile</Link>
             </li>
             <li className="mb-3 flex items-center">
               <FaCalendarAlt className="mr-2" />
               <Link to="/schedule" className="hover:underline">Appointments</Link>
             </li>
-            <li className="mb-3 flex items-center">
-              <FaFileMedical className="mr-2" />
-              <Link to="#records" className="hover:underline">Medical Records</Link>
-            </li>
+          
+          
             <li className="mb-3 flex items-center">
               <FaCog className="mr-2" />
-              <Link to="#settings" className="hover:underline">Settings</Link>
+              <Link to={`/settings?role=${role}`} className="hover:underline">Settings</Link>
             </li>
             {role === 'medic' && (
               <li className="mb-3 flex items-center">
@@ -89,19 +88,27 @@ const Dashboard = () => {
                       Patient Dashboard
                     </h3>
                     <p>View your medical records, appointments, and more.</p>
-                    <button className="bg-blue-600 text-white px-4 py-2 rounded mt-4 m-2 hover:bg-blue-700">
+                    <button 
+                      onClick={() => navigate('/medical-record-patient')}
+                      className="bg-blue-600 text-white px-4 py-2 rounded mt-4 m-2 hover:bg-blue-700"
+                    >
                       View Medical Records
                     </button>
                     <button 
-        onClick={() => navigate('/Schedule')} // Navegar a /appointments
-        className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700"
-      >
-        Book an Appointment
-      </button>
-                    <button className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700">
+                      onClick={() => navigate('/schedule')}
+                      className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700"
+                    >
+                      Book an Appointment
+                    </button>
+                    <button 
+                      onClick={() => navigate('/patient-medication')}
+                      className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700"
+                    >
                       View Medications
                     </button>
-                    <button className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700">
+                    <button
+                    onClick={() => navigate('/update-medical-records')}
+                    className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700">
                       Update Medical Records
                     </button>
                   </div>
@@ -109,8 +116,13 @@ const Dashboard = () => {
               </>
             }
           />
-          <Route path="/schedule" element={<Appointments userRole={role} />} />
+          <Route path="/schedule/medic" element={<Appointments userRole="medic" />} />
+          <Route path="/schedule/patient" element={<Appointments userRole="patient" />} />
           <Route path="/view-patients" element={<ViewPatients />} />
+          <Route path="/medical-record-patient" element={<MedicalRecords />} />
+          <Route path="/patient-medication" element={<PatientMedications />} />
+          <Route path="/update-medical-records" element={<UploadMedicalRecords />} />
+
         </Routes>
       </div>
     </div>

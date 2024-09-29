@@ -2,11 +2,13 @@
   "name": "medical-frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://7454-131-94-186-14.ngrok-free.app",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "ajv-keywords": "^5.1.0",
+    "cors": "^2.8.5",
     "react": "^18.3.1",
     "react-calendar": "^5.0.0",
     "react-dom": "^18.3.1",

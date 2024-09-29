@@ -1,5 +1,5 @@
-import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ViewMedicalRecords = () => {
   const { patientId } = useParams();
@@ -55,16 +55,17 @@ const ViewMedicalRecords = () => {
       <div className="mt-5">
         <button
           onClick={goToDashboard}
-          className="bg-blue-500 text-white px-4 py-2 rounded-lg mr-2"
+          className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700"
         >
           Go to Dashboard
         </button>
         <button
           onClick={goToSubscription}
-          className="bg-green-500 text-white px-4 py-2 rounded-lg"
+          className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700"
         >
           Go to Subscription Page
         </button>
+    
       </div>
     </div>
   );

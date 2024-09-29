@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 // Importar useNavigate solo si planeas usarlo
-import { useNavigate } from 'react-router-dom';
 
 const Appointments = ({ userRole }) => {
   const [appointments, setAppointments] = useState([]);
@@ -91,7 +90,7 @@ const Appointments = ({ userRole }) => {
         </>
       )}
 
-      {userRole === 'patient' && (
+      {userRole === 'patients' && (
         <div>
           <h3 className="text-lg mb-2">Schedule New Appointment</h3>
           <input

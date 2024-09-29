@@ -1,17 +1,55 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
   const navigate = useNavigate();
-
+  const fetchToken = async (username, password) => {
+    try {
+      const response = await fetch('://https7454-131-94-186-14.ngrok-free.app/token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          'username': username,   // This should be the user's email or username
+          'password': password,   // This should be the user's password
+        })
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to fetch token');
+      }
+  
+      const data = await response.json();
+      console.log('Token:', data.access_token);
+  
+      // Save token to localStorage or state
+      localStorage.setItem('authToken', JSON.stringify(data.access_token));;
+      console.log(localStorage.getItem('authToken'));
+      return data.access_token;
+    } catch (error) {
+      console.error('Error fetching token:', error);
+      return null;
+    }
+  };
+  
+  // Usage example
   const handleLogin = (e) => {
     e.preventDefault();
     if (email && password && role) {
       // This is just a sample, you should add authentication logic here
-      navigate(`/dashboard?role=${role}`);
+      const token = fetchToken(email, password);
+      
+      if (token) {
+          navigate(`/dashboard?role=${role}`);
+          localStorage.setItem('authToken', token);
+         // localStorage.setItem('userId', id);
+      }
+      // navigate(`/dashboard?role=${role}`);
     } else {
       alert('Please fill in all fields and select a role');
     }
