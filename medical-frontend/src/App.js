@@ -6,13 +6,13 @@ import Appointments from './Components/AdmnComponents/appointments';
 import Dashboard from './Components/AdmnComponents/dashboard';
 import Login from './Components/AdmnComponents/login';
 import Signup from './Components/AdmnComponents/signup';
+import RiskPage from './Components/DocComponents/RiskPage';
 import SubscribePatient from './Components/DocComponents/SubscribePatient';
 import ViewMedicalRecords from './Components/DocComponents/ViewMedicalRecords';
 import ViewPatients from './Components/DocComponents/ViewPatients';
 import MedicalRecords from './Components/patientComponents/MedicalRecords';
 import PatientMedications from './Components/patientComponents/PatientMedication';
 import UploadMedicalRecords from './Components/patientComponents/UpdateMedicalRecords';
-
 
 function App() {
   return (
@@ -33,6 +33,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/update-medical-records" element={<UploadMedicalRecords />} />
+        <Route path="/risks" element={<RiskPage />} />
 
 
       </Routes>

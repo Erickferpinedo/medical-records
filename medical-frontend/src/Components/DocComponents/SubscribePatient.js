@@ -23,7 +23,13 @@ const SubscribePatient = () => {
       }
 
       const data = await response.json();
+      localStorage.setItem("risks", JSON.stringify(data)); // Store the risks data in localStorage
+
       console.log('Predicted Side Effects:', data);
+
+      // Navigate to the new risks page with the predicted risks data
+      navigate('/risks', { state: { risks: data } });
+
     } catch (error) {
       setApiError('Failed to predict medication side effects.');
       console.error('Error during fetch:', error);
@@ -45,11 +51,8 @@ const SubscribePatient = () => {
     await predictMedicationSideEffects(prescription);
 
     try {
-      // Example of handling the submission of the prescription
-      // await submitPrescription(patientId, prescription);
-
       alert(`Prescription for Patient ${patientId} submitted successfully!`);
-      navigate(`/view-patients`); // Navigate back to the patient list
+      navigate(`/risks`); // Navigate back to the patient list
     } catch (error) {
       setError('Failed to submit prescription. Please try again later.');
       console.error('Submission error:', error);
@@ -79,7 +82,7 @@ const SubscribePatient = () => {
         </button>
         <button
           type="button"
-          onClick={() => navigate('/prescription-risk')}
+          onClick={() => navigate('/risks')}
           className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700"
         >
           View Prescription Risks
