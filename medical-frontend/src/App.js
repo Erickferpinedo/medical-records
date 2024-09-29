@@ -14,10 +14,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/view-patients" element={<ViewPatients />} />
-        <Route path="/view-medical-records" element={<ViewMedicalRecords />} />
-        <Route path="/Patient-subscription" element={<SubscribePatient />} />
-
-
+        <Route path="/view-medical-records/:patientId" element={<ViewMedicalRecords />} />
+        <Route path="/Patient-subscription/:patientId" element={<SubscribePatient />} />
       </Routes>
     </Router>
   );

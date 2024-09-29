@@ -86,25 +86,6 @@ const Dashboard = () => {
                   </div>
                 )}
 
-                {role === 'nurse' && (
-                  <div className="bg-white shadow rounded-lg p-5 mb-5">
-                    <h3 className="text-2xl font-bold mb-3 flex items-center">
-                      <FaClipboardList className="mr-2" />
-                      Nurse Dashboard
-                    </h3>
-                    <p>Check patient vitals, update records, and more.</p>
-                    <button className="bg-blue-600 text-white px-4 py-2 rounded mt-4 m-2 hover:bg-blue-700">
-                      Check Vitals
-                    </button>
-                    <button className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700">
-                      Update Records
-                    </button>
-                    <button className="bg-blue-600 text-white px-4 py-2 rounded mt-2 m-2 hover:bg-blue-700">
-                      Medication Management
-                    </button>
-                  </div>
-                )}
-
                 {role === 'patient' && (
                   <div className="bg-white shadow rounded-lg p-5 mb-5">
                     <h3 className="text-2xl font-bold mb-3 flex items-center">

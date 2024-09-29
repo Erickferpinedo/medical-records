@@ -51,8 +51,7 @@ const Login = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-transparent"
             >
               <option value="">Select a role</option>
-              <option value="medic">Medic</option>
-              <option value="nurse">Nurse</option>
+              <option value="medic">Medical Specialist</option>
               <option value="patient">Patient</option>
             </select>
           </div>
