@@ -90,7 +90,7 @@ const Appointments = ({ userRole }) => {
         </>
       )}
 
-      {userRole === 'patients' && (
+      {userRole === 'patient' && (
         <div>
           <h3 className="text-lg mb-2">Schedule New Appointment</h3>
           <input

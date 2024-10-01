@@ -51,7 +51,7 @@ const PrescriptionRisk = () => {
             ))}
           </ul>
         )}
-<div className='flex flex-row items-center justify-center'>
+<div className='flex flex-row items'>
 <div className="text-center mt-6">
           <Link to="/dashboard?role=medic" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
             Back to Dashboard

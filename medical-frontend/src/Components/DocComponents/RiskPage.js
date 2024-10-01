@@ -4,23 +4,20 @@ const RiskPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Retrieve risks data from location state
-  const risks = location.state?.risks || {}; // Use optional chaining to avoid errors
+  // Safely retrieve and parse risks data from localStorage
+  const risks = JSON.parse(localStorage.getItem('risks')) || [];
 
   // Log risks for debugging
-  console.log('Risks:', risks, 'Type:', typeof risks);
 
-  // Convert risks object to an array of entries
-  const risksArray = Object.entries(risks); // Convert risks to array of [key, value] pairs
 
   return (
     <div className="bg-white shadow rounded-lg p-5">
       <h2 className="text-2xl font-bold mb-4">Predicted Side Effects</h2>
-      {risksArray.length > 0 ? (
+      {Array.isArray(risks) && risks.length > 0 ? (
         <ul className="list-disc pl-5">
-          {risksArray.map(([risk, probability], index) => (
+          {risks.map((risk, index) => (
             <li key={index} className="mb-2 text-lg">
-              {risk}: {probability.toFixed(2)}% {/* Display risk with its probability */}
+              {risk}
             </li>
           ))}
         </ul>
